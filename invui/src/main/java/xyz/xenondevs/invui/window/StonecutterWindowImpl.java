@@ -94,7 +94,7 @@ final class StonecutterWindowImpl extends AbstractSplitWindow<CustomStonecutterM
         );
         
         if (slot >= 0 && slot < buttonsGui.getSize()) {
-            var click = new Click(getViewer(), ClickType.LEFT);
+            var click = new Click(getViewer(), ClickType.LEFT, slot);
             buttonsGui.handleClick(slot, click);
         }
     }

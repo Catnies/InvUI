@@ -10,14 +10,26 @@ import org.bukkit.event.inventory.ClickType;
  * @param clickType    The type of click.
  * @param hotbarButton The hotbar key that was pressed (in [0; 8]),
  *                     or -1 if {@link #clickType()} is not {@link ClickType#NUMBER_KEY}.
+ * @param slot         The slot of click.
  */
 public record Click(
     Player player,
     ClickType clickType,
-    int hotbarButton
-)
-{
+    int hotbarButton,
+    int slot
+) {
     
+    /**
+     * Creates a new {@link Click} with the given player and click type.
+     *
+     * @param player    The player who clicked.
+     * @param clickType The type of click.
+     * @param slot      The slot of click.
+     */
+    public Click(Player player, ClickType clickType, int slot) {
+        this(player, clickType, -1, slot);
+    }
+
     /**
      * Creates a new {@link Click} with the given player and click type.
      *
@@ -25,7 +37,7 @@ public record Click(
      * @param clickType The type of click.
      */
     public Click(Player player, ClickType clickType) {
-        this(player, clickType, -1);
+        this(player, clickType, -1, -1);
     }
     
 }
