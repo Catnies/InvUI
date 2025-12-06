@@ -499,7 +499,7 @@ public abstract class CustomContainerMenu {
         // let window handle the click
         int finalHotbarBtn = hotbarBtn;
         runInInteractionContext(() -> {
-            Click click = new Click(player, clickType, finalHotbarBtn);
+            Click click = new Click(player, clickType, finalHotbarBtn, packet.slotNum());
             getWindowEvents().handleClick(packet.slotNum(), click);
         });
     }
@@ -539,7 +539,7 @@ public abstract class CustomContainerMenu {
                     if (dragSlots.size() == 1) {
                         // handle one slot drags as simple clicks
                         int slot = dragSlots.iterator().nextInt();
-                        getWindowEvents().handleClick(slot, new Click(player, dragMode, -1));
+                        getWindowEvents().handleClick(slot, new Click(player, dragMode, -1, slot));
                     } else {
                         getWindowEvents().handleDrag(dragSlots, dragMode);
                         
